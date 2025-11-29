@@ -1,10 +1,9 @@
-import {mouthData, Mouth} from '../../data';
+import { mouthData } from '../../data';
+import { useSettings } from '../context/setting-context';
 
 const MouthSelector:React.FC = () => {
 
-	const handleClick = (item:Mouth) => {
-		console.log('mouth', item.id);
-	}
+	const {setMouth} = useSettings();
 
 	return (
 		<div className="items">
@@ -13,7 +12,7 @@ const MouthSelector:React.FC = () => {
 					className='item'
 					key={mouth.id}
 					src={mouth.image}
-					onClick={() => { handleClick(mouth) }}
+					onClick={() => {setMouth(mouth.id)}}
 					/>
 			)}
 		</div>

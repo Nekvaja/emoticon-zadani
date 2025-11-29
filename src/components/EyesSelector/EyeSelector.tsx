@@ -1,10 +1,9 @@
-import {eyesData, Eyes} from '../../data';
+import {eyesData} from '../../data';
+import { useSettings } from '../context/setting-context';
 
 const EyesSelector:React.FC = () => {
 
-	const handleClick = (item:Eyes) => {
-		console.log('eyes', item.id);
-	}
+	const {setEyes} = useSettings();
 
 	return (
 		<div className="items">
@@ -13,7 +12,9 @@ const EyesSelector:React.FC = () => {
 					className='item'
 					key={eyes.id}
 					src={eyes.image}
-					onClick={() => { handleClick(eyes) }}
+					onClick={() => {
+						setEyes(eyes.id)
+					}}
 					/>
 			)}
 		</div>

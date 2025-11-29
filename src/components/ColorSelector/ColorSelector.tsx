@@ -1,10 +1,9 @@
-import {Color, colorsData} from '../../data';
+import {colorsData} from '../../data';
+import { useSettings } from '../context/setting-context';
 
 const ColorSelector:React.FC = () => {
 
-	const handleClick = (item:Color) => {
-		console.log('color', item.id);
-	}
+	const {setColor} = useSettings();
 
 	return (
 		<div className="items">
@@ -13,7 +12,7 @@ const ColorSelector:React.FC = () => {
 					className='item'
 					key={color.id}
 					style={{ backgroundColor: color.value}}
-					onClick={() => { handleClick(color) }}
+					onClick={() => setColor(color.id) }
 					/>
 			)}
 		</div>
